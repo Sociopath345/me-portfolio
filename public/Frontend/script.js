@@ -46,6 +46,74 @@ if (rootElement) {
         </div>
     </div>
 
+    <!-- ================================================================== -->
+    <!-- IRON MAN / J.A.R.V.I.S. HUD BOOT LOADER OVERLAY -->
+    <!-- ================================================================== -->
+    <div id="jarvisBootOverlay" class="fixed inset-0 z-[10000] bg-[#030712] flex flex-col items-center justify-center font-mono select-none transition-all duration-700">
+        <!-- Ambient HUD Grid & Vignette -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+        <div class="absolute inset-0 tech-grid opacity-25 pointer-events-none"></div>
+
+        <!-- Central Arc Reactor HUD Core -->
+        <div class="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center mb-8">
+            <!-- Outermost Rotating Telemetry Notches -->
+            <div class="absolute inset-0 rounded-full border border-dashed border-cyan-400/40 animate-arc-spin"></div>
+            <!-- Counter-rotating Inner Ring with Segmented Bars -->
+            <div class="absolute inset-3 rounded-full border-2 border-t-cyan-400 border-r-transparent border-b-blue-500 border-l-transparent animate-arc-spin-reverse opacity-80"></div>
+            <!-- Secondary Concentric Gauge -->
+            <div class="absolute inset-8 rounded-full border border-cyan-500/30"></div>
+            <!-- Radar Sweep Gradient Beam -->
+            <div class="absolute inset-6 rounded-full overflow-hidden pointer-events-none opacity-40">
+                <div class="w-full h-full bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,rgba(0,240,255,0.6)_360deg)] animate-radar-sweep origin-center rounded-full"></div>
+            </div>
+            <!-- Arc Reactor Glowing Core (Stark Arc Reactor Core) -->
+            <div id="reactorCoreNode" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-950 border-2 border-cyan-300 flex items-center justify-center animate-arc-pulse shadow-[0_0_40px_rgba(0,240,255,0.7)] relative z-10 transition-transform duration-500">
+                <!-- Inner Triangular Power Conduits -->
+                <svg class="w-16 h-16 text-cyan-300 drop-shadow-[0_0_15px_#00f0ff]" viewBox="0 0 24 24" fill="none">
+                    <polygon points="12,3 3,19 21,19" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" class="fill-cyan-400/20" />
+                    <polygon points="12,8 6.5,17 17.5,17" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" class="fill-cyan-400/30" />
+                    <circle cx="12" cy="14" r="2.5" fill="#00f0ff" class="animate-pulse" />
+                </svg>
+            </div>
+            <!-- Orbiting Particle Nodes -->
+            <div class="absolute inset-0 flex items-center justify-center animate-spin" style="animation-duration: 4s;">
+                <div class="w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_8px_#00f0ff] -translate-y-28"></div>
+            </div>
+        </div>
+
+        <!-- Telemetry Log Header & Terminal Stream -->
+        <div class="w-full max-w-md px-6 text-center z-10">
+            <div class="flex items-center justify-center gap-2 mb-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                <span class="text-xs sm:text-sm font-sans font-bold tracking-[0.25em] text-cyan-300 uppercase">
+                    STARK // M.A.R.K. PROTOCOL INITIALIZATION
+                </span>
+            </div>
+
+            <!-- Dynamic Telemetry Log Feed -->
+            <div id="bootTelemetryLog" class="text-xs sm:text-sm text-cyan-400/90 font-mono tracking-wider h-6 flex items-center justify-center text-center">
+                INITIALIZING CORE POWER CELLS...
+            </div>
+
+            <!-- HUD Progress Meter -->
+            <div class="mt-4 w-full bg-slate-900/90 border border-cyan-500/40 p-1 rounded-sm shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                <div id="bootProgressBar" class="h-2 bg-gradient-to-r from-blue-600 via-cyan-400 to-white transition-all duration-150 rounded-sm w-[5%] shadow-[0_0_10px_#00f0ff]"></div>
+            </div>
+
+            <!-- Percentage and Memory Telemetry -->
+            <div class="flex justify-between items-center text-[10px] text-cyan-500/70 mt-2 font-mono tracking-widest">
+                <span id="bootPercentText">LOAD // 05%</span>
+                <span>DB: FIRESTORE [87_NODES]</span>
+                <span>NEURAL: GEMINI-2.5-FLASH</span>
+            </div>
+
+            <!-- Skip Prompt -->
+            <button id="skipBootBtn" type="button" class="mt-6 text-[11px] tracking-widest font-mono text-cyan-400/40 hover:text-cyan-300 transition-colors uppercase cursor-pointer py-1 px-3 border border-transparent hover:border-cyan-500/30 rounded">
+                [ PRESS ANY KEY OR CLICK TO ENGAGE ]
+            </button>
+        </div>
+    </div>
+
     <!-- Navigation / Top HUD Bar -->
     <nav
         class="fixed top-0 w-full z-40 backdrop-blur-md border-b border-jarvis-blue/30 dark:border-jarvis-cyan/30 bg-white/80 dark:bg-jarvis-dark/80">
@@ -1826,9 +1894,32 @@ if (rootElement) {
                             <div class="w-2 h-2 rounded-full bg-jarvis-blue dark:bg-jarvis-cyan animate-pulse"></div>
                         </div>
                         <div
-                            class="bg-slate-100 dark:bg-jarvis-dark/80 border border-jarvis-blue/20 dark:border-jarvis-cyan/30 p-4 rounded-r-lg rounded-bl-lg text-base sm:text-lg leading-relaxed text-slate-800 dark:text-jarvis-cyan max-w-[85%]">
-                            Greetings. I am M.A.R.K., the AI assistant for Hein Hlyan's portfolio. How may
-                            I assist you today in learning more about his capabilities?
+                            class="bg-slate-100 dark:bg-jarvis-dark/80 border border-jarvis-blue/20 dark:border-jarvis-cyan/30 p-4 rounded-r-lg rounded-bl-lg text-base sm:text-lg leading-relaxed text-slate-800 dark:text-jarvis-cyan max-w-[90%] sm:max-w-[85%]">
+                            <p class="mb-3">Greetings. I am <strong>M.A.R.K.</strong>, the AI assistant for <strong>Hein Hlyan</strong>'s portfolio. How may I assist you today in exploring his capabilities?</p>
+                            
+                            <!-- Quick Inquiries Buttons (Referenced from M.A.R.K. Engine) -->
+                            <div class="mt-3 pt-3 border-t border-jarvis-blue/20 dark:border-jarvis-cyan/20">
+                                <p class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2.5 tracking-wider uppercase">
+                                    QUICK INQUIRIES // CLICK TO RUN:
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What hackathons and awards has Hein won?">
+                                        ⚡ Hackathon &amp; Awards
+                                    </button>
+                                    <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What leadership positions has Hein held at UIT and in the community?">
+                                        🛡️ Leadership Roles
+                                    </button>
+                                    <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="How can I contact Hein Hlyan?">
+                                        📡 Contact Channels
+                                    </button>
+                                    <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What projects has Hein built?">
+                                        🚀 Projects
+                                    </button>
+                                    <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What foreign visits and international travel has Hein made?">
+                                        🌍 International Visits
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2532,6 +2623,113 @@ if (chatForm && chatInput && chatHistoryDiv) {
             appendMessage("[COMM-LINK ERROR: UNABLE TO REACH M.A.R.K. BACKEND. PLEASE ENSURE SERVERLESS SERVICE IS ACTIVE.]", 'model');
         }
     });
+
+    // Bind Quick Inquiries Click Handlers
+    document.querySelectorAll('.quick-inquiry-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const query = btn.getAttribute('data-query');
+            if (query && chatInput && chatForm) {
+                chatInput.value = query;
+                chatForm.dispatchEvent(new Event('submit', { cancelable: true }));
+            }
+        });
+    });
+}
+
+// --------------------------------------------------------------------------
+// Markdown Formatter for M.A.R.K. Chatbot Responses
+// --------------------------------------------------------------------------
+function formatMarkResponse(text) {
+    if (!text) return '';
+
+    // Escape basic raw HTML
+    let escaped = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    // Code blocks: ```code```
+    escaped = escaped.replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-900/90 text-cyan-300 p-3 rounded-lg my-2.5 overflow-x-auto font-mono text-xs border border-cyan-800/40 shadow-inner"><code>$1</code></pre>');
+
+    // Inline code: `code`
+    escaped = escaped.replace(/`([^`]+)`/g, '<code class="bg-slate-800/15 dark:bg-cyan-950/40 text-jarvis-blue dark:text-jarvis-cyan px-1.5 py-0.5 rounded font-mono text-xs border border-jarvis-blue/20 dark:border-jarvis-cyan/30">$1</code>');
+
+    // Bold text: **text**
+    escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-slate-900 dark:text-white">$1</strong>');
+
+    // Italic text: *text* (when not preceded or followed by an asterisk)
+    escaped = escaped.replace(/(^|[^\*])\*([^\*\n]+)\*([^\*]|$)/g, '$1<em>$2</em>$3');
+
+    // Parse lines for bullet lists & paragraphs
+    const lines = escaped.split('\n');
+    let inList = false;
+    const formatted = [];
+
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i].trim();
+        if (!line) {
+            if (inList) {
+                inList = false;
+                formatted.push('</ul>');
+            }
+            continue;
+        }
+
+        // Check for line starting with bullet (*, -, or •)
+        const bulletMatch = line.match(/^[\*\-•]\s+(.*)$/);
+        if (bulletMatch) {
+            if (!inList) {
+                inList = true;
+                formatted.push('<ul class="list-disc list-inside space-y-2 my-2.5 pl-1">');
+            }
+            formatted.push(`<li class="leading-relaxed">${bulletMatch[1]}</li>`);
+        } else {
+            // Check if multiple items were chained inline with asterisks, e.g. "including: * **1st Runner-Up**... * **Winner**..."
+            if (line.includes(' * **') || line.includes(' • ')) {
+                const parts = line.split(/(?=\s\*\s|\s\*\s*\*\*|\s•\s)/);
+                if (parts.length > 1) {
+                    if (inList) {
+                        inList = false;
+                        formatted.push('</ul>');
+                    }
+                    const prefix = parts[0].trim();
+                    if (prefix && !prefix.startsWith('*')) {
+                        formatted.push(`<p class="leading-relaxed mb-2">${prefix}</p>`);
+                    }
+                    formatted.push('<ul class="list-disc list-inside space-y-2 my-2.5 pl-1">');
+                    for (let j = 1; j < parts.length; j++) {
+                        let clean = parts[j].replace(/^[\s\*\-•]+/, '').trim();
+                        if (clean) {
+                            formatted.push(`<li class="leading-relaxed">${clean}</li>`);
+                        }
+                    }
+                    formatted.push('</ul>');
+                    continue;
+                }
+            }
+
+            if (inList) {
+                inList = false;
+                formatted.push('</ul>');
+            }
+
+            // Detect if line is the closing hook question (ends with question mark)
+            if (line.endsWith('?') && i === lines.length - 1) {
+                formatted.push(`<p class="leading-relaxed mt-3 pt-2 border-t border-jarvis-blue/15 dark:border-jarvis-cyan/15 font-semibold text-jarvis-blue dark:text-cyan-300">${line}</p>`);
+            } else {
+                formatted.push(`<p class="leading-relaxed mb-2 last:mb-0">${line}</p>`);
+            }
+        }
+    }
+
+    if (inList) {
+        formatted.push('</ul>');
+    }
+
+    let output = formatted.join('');
+    // Remove any remaining stray asterisks
+    output = output.replace(/\s\*\s/g, ' • ');
+    return output;
 }
 
 function appendMessage(text, sender) {
@@ -2557,9 +2755,13 @@ function appendMessage(text, sender) {
         ? 'bg-jarvis-blue/10 dark:bg-jarvis-cyan/20 border border-jarvis-blue/30 dark:border-jarvis-cyan/40 p-4 rounded-l-lg rounded-br-lg text-base sm:text-lg leading-relaxed text-slate-900 dark:text-white max-w-[85%]'
         : 'bg-slate-100 dark:bg-jarvis-dark/80 border border-jarvis-blue/20 dark:border-jarvis-cyan/30 p-4 rounded-r-lg rounded-bl-lg text-base sm:text-lg leading-relaxed text-slate-800 dark:text-jarvis-cyan max-w-[85%]';
 
+    const contentHtml = sender === 'user'
+        ? text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        : formatMarkResponse(text);
+
     msgDiv.innerHTML = `
         ${iconHtml}
-        <div class="${bubbleClass}">${text}</div>
+        <div class="${bubbleClass}">${contentHtml}</div>
     `;
 
     chatHistoryDiv.appendChild(msgDiv);
@@ -2632,3 +2834,68 @@ if (hudCursor) {
 
     renderCursorFrame();
 }
+
+// ==========================================================================
+// 6. IRON MAN / J.A.R.V.I.S. BOOT LOADER SEQUENCE CONTROLLER
+// ==========================================================================
+(function initJarvisBootLoader() {
+    const overlay = document.getElementById('jarvisBootOverlay');
+    const logEl = document.getElementById('bootTelemetryLog');
+    const barEl = document.getElementById('bootProgressBar');
+    const percentEl = document.getElementById('bootPercentText');
+    const coreNode = document.getElementById('reactorCoreNode');
+    const skipBtn = document.getElementById('skipBootBtn');
+
+    if (!overlay) return;
+
+    const telemetrySteps = [
+        { progress: 15, text: "INITIALIZING ARC REACTOR POWER CELLS... [ONLINE]" },
+        { progress: 38, text: "CALIBRATING QUANTUM ENCRYPTION HANDSHAKE... [SECURE]" },
+        { progress: 65, text: "CONNECTING TO FIRESTORE KNOWLEDGE BASE (87 NODES)... [STABLE]" },
+        { progress: 85, text: "ALIGNING SARGALAY LLM GATEWAY (GEMINI-2.5-FLASH)... [SYNCED]" },
+        { progress: 95, text: "CONFIGURING MULTILINGUAL COGNITIVE ROUTER... [ARMED]" },
+        { progress: 100, text: "ALL PROTOCOLS VERIFIED. WELCOME, OPERATOR." }
+    ];
+
+    let currentStep = 0;
+    let isFinished = false;
+
+    function finishBoot() {
+        if (isFinished) return;
+        isFinished = true;
+
+        if (barEl) barEl.style.width = '100%';
+        if (percentEl) percentEl.textContent = 'LOAD // 100%';
+        if (logEl) logEl.textContent = 'ALL SYSTEMS NOMINAL // ACCESS GRANTED';
+        if (coreNode) {
+            coreNode.style.transform = 'scale(1.25)';
+            coreNode.style.boxShadow = '0 0 70px #00f0ff, 0 0 100px #00ffff';
+        }
+
+        setTimeout(() => {
+            overlay.classList.add('opacity-0', 'scale-105', 'pointer-events-none');
+            setTimeout(() => {
+                overlay.remove();
+            }, 750);
+        }, 350);
+    }
+
+    const interval = setInterval(() => {
+        if (currentStep < telemetrySteps.length) {
+            const step = telemetrySteps[currentStep];
+            if (barEl) barEl.style.width = step.progress + '%';
+            if (percentEl) percentEl.textContent = `LOAD // ${String(step.progress).padStart(2, '0')}%`;
+            if (logEl) logEl.textContent = step.text;
+            currentStep++;
+        } else {
+            clearInterval(interval);
+            finishBoot();
+        }
+    }, 260);
+
+    if (overlay) overlay.addEventListener('click', finishBoot);
+    if (skipBtn) skipBtn.addEventListener('click', finishBoot);
+    window.addEventListener('keydown', (e) => {
+        if (!isFinished) finishBoot();
+    }, { once: true });
+})();
