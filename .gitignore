@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables & service keys
+.env
+.env.*
+serviceAccountKey.json
+*.pem
+
+# IDE & agent metadata
+.agents/
+.cursor/
+.vscode/
+.idea/
+
+# Build & deployment artifacts
+.vercel/
+dist/
+build/
+diff.txt
+
+# OS metadata
+.DS_Store
+Thumbs.db

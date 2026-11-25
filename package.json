@@ -1,0 +1,14 @@
+{
+  "name": "hein-hlyan-portfolio",
+  "version": "1.0.0",
+  "description": "Hein Hlyan Portfolio with M.A.R.K. Knowledge Engineering Assistant",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-chat.js"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.0",
+    "openai": "^4.86.1"
+  }
+}
