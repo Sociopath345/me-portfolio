@@ -1,0 +1,220 @@
+/* ==========================================================================
+   HEIN HLYAN PORTFOLIO - HUD & FUTURISTIC THEME STYLES
+   ========================================================================== */
+
+/* Base Styles */
+body {
+    overflow-x: hidden;
+}
+
+/* Scanline Overlay */
+.scanline-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.2), transparent);
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.light .scanline-overlay {
+    background: linear-gradient(to bottom, transparent, rgba(0, 85, 255, 0.2), transparent);
+}
+
+/* Tech Grid Background */
+.tech-grid {
+    background-size: 40px 40px;
+    background-image:
+        linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+}
+
+.light .tech-grid {
+    background-image:
+        linear-gradient(to right, rgba(0, 85, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 85, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Glowing Borders */
+.hud-border {
+    position: relative;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.1) inset, 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.light .hud-border {
+    border: 1px solid rgba(0, 85, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 85, 255, 0.1) inset, 0 0 10px rgba(0, 85, 255, 0.1);
+}
+
+/* Corner accents for HUD boxes */
+.hud-corners::before,
+.hud-corners::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: #00f0ff;
+    border-style: solid;
+    transition: all 0.3s ease;
+}
+
+.light .hud-corners::before,
+.light .hud-corners::after {
+    border-color: #0055ff;
+}
+
+.hud-corners::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+}
+
+.hud-corners::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+}
+
+/* Interactive Hover Glow */
+.dark .hover-glow:hover {
+    border-color: rgba(0, 240, 255, 0.9) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.55), inset 0 0 15px rgba(0, 240, 255, 0.25) !important;
+    background-color: rgba(0, 240, 255, 0.08) !important;
+}
+
+.light .hover-glow:hover {
+    border-color: rgba(0, 85, 255, 0.8) !important;
+    box-shadow: 0 0 25px rgba(0, 85, 255, 0.4), inset 0 0 15px rgba(0, 85, 255, 0.2) !important;
+    background-color: rgba(0, 85, 255, 0.06) !important;
+}
+
+.dark .hover-glow:hover::before,
+.dark .hover-glow:hover::after {
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 12px #00f0ff;
+}
+
+.light .hover-glow:hover::before,
+.light .hover-glow:hover::after {
+    border-color: #0055ff !important;
+    box-shadow: 0 0 12px #0055ff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #030712;
+}
+
+.light ::-webkit-scrollbar-track {
+    background: #f0f9ff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00f0ff;
+    border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+    background: #0055ff;
+}
+
+/* Blinking Cursor */
+.cursor-blink {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background-color: #00f0ff;
+    animation: pulse-fast 1s infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+.light .cursor-blink {
+    background-color: #0055ff;
+}
+
+/* Profile Photo Avatar */
+.photo-avatar {
+    mix-blend-mode: luminosity;
+    transition: all 0.5s ease;
+}
+
+.photo-container:hover .photo-avatar,
+.photo-avatar:hover {
+    mix-blend-mode: normal !important;
+    filter: none !important;
+}
+
+/* Background Cursor Glow Spotlight */
+.cursor-glow-bg {
+    background: radial-gradient(
+        650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(0, 240, 255, 0.16),
+        rgba(0, 85, 255, 0.05) 45%,
+        transparent 70%
+    );
+    will-change: background;
+}
+
+.light .cursor-glow-bg {
+    background: radial-gradient(
+        650px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(0, 85, 255, 0.12),
+        rgba(0, 150, 255, 0.04) 45%,
+        transparent 70%
+    );
+}
+
+/* Custom Arc Reactor & Target Scoping Cursor */
+@media (pointer: fine) {
+    body.custom-cursor-enabled,
+    body.custom-cursor-enabled * {
+        cursor: none !important;
+    }
+}
+
+#hud-cursor {
+    will-change: transform;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#hud-cursor.targeting #cursor-reactor {
+    display: none !important;
+}
+
+#hud-cursor.targeting #cursor-target {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1.15) !important;
+}
+
+#hud-cursor.text-mode #cursor-reactor,
+#hud-cursor.text-mode #cursor-target {
+    display: none !important;
+}
+
+#hud-cursor.text-mode #cursor-text {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+/* Glowing text typing caret */
+#chat-input, input[type="text"], textarea {
+    caret-color: #00f0ff;
+}
+
+.light #chat-input, .light input[type="text"], .light textarea {
+    caret-color: #0055ff;
+}
+
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hein Hlyan // Portfolio</title>
+
+    <!-- Circular Profile Favicon -->
+    <link id="favicon" rel="icon" type="image/png" href="../photos/Roundedppp.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN & Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+
+    <!-- Custom HUD & Theme Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Enforce Default Light Theme Script -->
+    <script>
+        (function () {
+            var pref = localStorage.getItem('portfolio_theme');
+            if (pref === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            } else {
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('portfolio_theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        })();
+    </script>
+</head>
+
+<body class="bg-slate-50 dark:bg-jarvis-dark text-slate-800 dark:text-jarvis-cyan font-mono min-h-screen transition-colors duration-500 tech-grid">
+    <div id="root"></div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
