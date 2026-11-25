@@ -66,13 +66,30 @@ if (rootElement) {
             <div class="absolute inset-6 rounded-full overflow-hidden pointer-events-none opacity-40">
                 <div class="w-full h-full bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,rgba(0,240,255,0.6)_360deg)] animate-radar-sweep origin-center rounded-full"></div>
             </div>
-            <!-- Arc Reactor Glowing Core (Stark Arc Reactor Core) -->
+            <!-- Arc Reactor Glowing Core (Henry "H" Mecha Core) -->
             <div id="reactorCoreNode" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-950 border-2 border-cyan-300 flex items-center justify-center animate-arc-pulse shadow-[0_0_40px_rgba(0,240,255,0.7)] relative z-10 transition-transform duration-500">
-                <!-- Inner Triangular Power Conduits -->
-                <svg class="w-16 h-16 text-cyan-300 drop-shadow-[0_0_15px_#00f0ff]" viewBox="0 0 24 24" fill="none">
-                    <polygon points="12,3 3,19 21,19" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" class="fill-cyan-400/20" />
-                    <polygon points="12,8 6.5,17 17.5,17" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" class="fill-cyan-400/30" />
-                    <circle cx="12" cy="14" r="2.5" fill="#00f0ff" class="animate-pulse" />
+                <!-- Cybernetic Henry "H" Mecha Power Core -->
+                <svg class="w-14 h-14 sm:w-16 sm:h-16 text-cyan-300 drop-shadow-[0_0_20px_#00f0ff]" viewBox="0 0 48 48" fill="none">
+                    <!-- Subtle Corner Reticles -->
+                    <path d="M 8 15 L 8 7 L 16 7" stroke="#00f0ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+                    <path d="M 40 15 L 40 7 L 32 7" stroke="#00f0ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+                    <path d="M 8 33 L 8 41 L 16 41" stroke="#00f0ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+                    <path d="M 40 33 L 40 41 L 32 41" stroke="#00f0ff" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+
+                    <!-- Left Futuristic Pillar -->
+                    <path d="M 11 11 L 16 6 L 19 6 L 19 42 L 14 42 L 11 38 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <line x1="15" y1="12" x2="15" y2="36" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="3 2" />
+
+                    <!-- Right Futuristic Pillar -->
+                    <path d="M 37 11 L 32 6 L 29 6 L 29 42 L 34 42 L 37 38 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <line x1="33" y1="12" x2="33" y2="36" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="3 2" />
+
+                    <!-- Center High-Energy Bridge -->
+                    <polygon points="18,21 30,21 30,27 18,27" fill="currentColor" fill-opacity="0.45" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                    
+                    <!-- Center Core Reactor Singularity -->
+                    <circle cx="24" cy="24" r="3" fill="#ffffff" class="drop-shadow-[0_0_10px_#00f0ff] animate-pulse" />
+                    <circle cx="24" cy="24" r="6" stroke="#00f0ff" stroke-width="1" class="animate-ping" style="animation-duration: 2s;" />
                 </svg>
             </div>
             <!-- Orbiting Particle Nodes -->
@@ -86,7 +103,7 @@ if (rootElement) {
             <div class="flex items-center justify-center gap-2 mb-2">
                 <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
                 <span class="text-xs sm:text-sm font-sans font-bold tracking-[0.25em] text-cyan-300 uppercase">
-                    STARK // M.A.R.K. PROTOCOL INITIALIZATION
+                    HENRY // M.A.R.K. PROTOCOL INITIALIZATION
                 </span>
             </div>
 
