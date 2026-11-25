@@ -4,6 +4,7 @@
   "description": "Hein Hlyan Portfolio with M.A.R.K. Knowledge Engineering Assistant",
   "main": "index.html",
   "scripts": {
+    "build": "echo 'Static assets ready'",
     "start": "node server.js",
     "test": "node test-chat.js"
   },
