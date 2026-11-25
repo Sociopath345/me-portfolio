@@ -9,6 +9,11 @@ if (!fs.existsSync(publicDir)) {
 // Copy index.html to public
 fs.copyFileSync(path.join(__dirname, 'index.html'), path.join(publicDir, 'index.html'));
 
+// Copy root favicons to public
+if (fs.existsSync(path.join(__dirname, 'favicon.ico'))) {
+  fs.copyFileSync(path.join(__dirname, 'favicon.ico'), path.join(publicDir, 'favicon.ico'));
+}
+
 // Copy directory recursively
 function copyDir(src, dest) {
   if (!fs.existsSync(dest)) {
