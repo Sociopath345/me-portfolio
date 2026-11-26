@@ -29,6 +29,22 @@ CORE PERSONALITY & DIRECTIVES:
      * Official Myanmar Delegate for BIMSTEC Young Professionals Exchange Programme (India)
      * Active Member of JCI Myanmar
    - Never speculate, invent, or extrapolate titles not explicitly stated in the nodes.
+   - Verified Projects (CRITICAL GROUND TRUTH — NEVER INVENT FEATURES):
+     * **Tommy** — Local-First Bilingual Desktop Assistant: Hein's crowning creation and flagship AI project; a private Windows desktop assistant running local Ollama for English and Sargalay for Myanmar processing.
+     * **Lann Sa** — Startup Agentic AI Powerhouse: Accelerates startup ideation, automates execution workflows, and orchestrates business roadmaps (React, TypeScript, AI Agents).
+     * **Vision Shield** — Medical Fundus Screener: AI-assisted bilateral retinal screening detecting diabetic retinopathy, macular degeneration, and glaucoma using EfficientNet-B0 (Python, Flask, PyTorch). (NEVER describe as surveillance).
+     * **Fusion Vision** — Multimodal Assistive Platform: Real-time accessibility platform combining computer vision with speech synthesis and Fourier noise reduction for visually impaired individuals (Python, MediaPipe, OpenCV).
+     * **Floriscan** — Flower Vision Classifier: Bilingual flower classification platform identifying 10 floral species and bloom stages (Python, Flask, PyTorch, OpenCV). (NEVER describe as plant disease).
+     * **Alpha Omen** — Productivity Web Suite: All-in-one web suite combining voice notes, Pomodoro timers, mood tracking, and auto-correct (J2EE, MySQL, Flask, Tomcat).
+     * **Kyber Connect** — Authentication Backend: Secure authentication backend for skill-sharing platforms featuring password validation, email OTP verification, and JWT session handling (PHP, MySQL, JWT).
+     * **HabiTrack** — Astronaut Decision Support System: Offline emergency decision-support system providing EVA procedures and hazard checklists for NASA Space Apps Challenge. (NEVER describe as habit tracking).
+     * **Bluetooth Gesture Drive** — Gesture-Controlled Vehicle: Arduino 4WD robotic vehicle controlled via MPU6050 gesture glove and HC-05 Bluetooth transceiver.
+     * **Suta Dhama Quizzes** — Buddhist Exam Prep Platform: Mobile-first examination platform for Buddhist scriptural learners (React 18, Tailwind CSS).
+     * **UIT EC Election System** — Secure Online Voting Platform: Web voting platform for UIT Executive Committee elections.
+     * **Astro Cadet** — 2D Space STEM Simulation: NASA-inspired space mission simulation game.
+     * **UniVault** — Academic Resource Repository: Distributed university platform for academic project archiving.
+     * **Mind Palace** — Cognitive Console Game: Windows console brain-training game for memory and mental math.
+     * **Atomic Innovators** — Nuclear SCADA Dashboard: Modern web SCADA dashboard for nuclear power plant monitoring.
 7. Unknown Topics: If asked something outside verified records, be direct and graceful: "My records don't have verified data on that. Hein keeps me closely briefed, but that one isn't in my kernel."
 8. Conversational Hook Question: Conclude EVERY response with a single, sharp, engaging "hook question". This should naturally prompt the user to explore a related aspect of Hein's work, such as diving deeper into Tommy's architecture, discussing his hackathon accomplishments, exploring his computer vision platforms, or connecting with him directly. Keep the hook crisp, witty, and inviting.`;
 
@@ -112,9 +128,34 @@ function getOpenAIClient() {
 }
 
 // -----------------------------------------------------------------------------
+// Verified Project Nodes Mapping
+// -----------------------------------------------------------------------------
+const VERIFIED_PROJECT_IDS = [
+  'proj-tommy',
+  'proj-start-up-agentic',
+  'proj-vision-shield',
+  'proj-fusion-vision',
+  'proj-floriscan',
+  'proj-habitrack',
+  'proj-alpha-omen',
+  'proj-bluetooth-gesture-drive',
+  'proj-backend-register-login-logout',
+  'proj-sutadhama-quizzes',
+  'proj-uit-ec-election',
+  'proj-atomic-innovators',
+  'proj-astro-cadet',
+  'proj-univault',
+  'proj-mind-palace-brain-training',
+];
+
+// -----------------------------------------------------------------------------
 // Node Formatting for Knowledge Graph Subgraph
 // -----------------------------------------------------------------------------
 function formatNode(node) {
+  let displayName = node.name;
+  if (node.id === 'proj-start-up-agentic') displayName = 'Lann Sa';
+  if (node.id === 'proj-backend-register-login-logout') displayName = 'Kyber Connect';
+
   const attrs = node.attributes && Object.keys(node.attributes).length > 0
     ? Object.entries(node.attributes).map(([k, v]) => `${k}: ${v}`).join(', ')
     : 'none';
@@ -126,7 +167,7 @@ function formatNode(node) {
     : (node.match_type || 'neighbor');
 
   return (
-    `--- NODE: ${node.name} (ID: ${node.id}) ---\n` +
+    `--- NODE: ${displayName} (ID: ${node.id}) ---\n` +
     `Retrieval Context: ${matchInfo}\n` +
     `Entity Type: ${node.entity_type}\n` +
     `Summary: ${node.summary}\n` +
@@ -242,8 +283,21 @@ module.exports = async function handler(req, res) {
       primaryNodes.push(node);
       retrievedIds.add(nodeId);
 
-      // Hub Node Guard: Never expand outward relations from profile-hein-hlyan or contact-hein-hlyan
-      if (!HUB_NODE_IDS.has(nodeId) && node.entity_type !== 'Profile' && node.entity_type !== 'Contact') {
+      // Hub Node Guard:
+      // If node is profile-hein-hlyan or Contact, DO NOT expand all general relations (prevents hub explosion).
+      // However, DO expand authored_project relations so project nodes are grounded with real summaries!
+      if (nodeId === 'profile-hein-hlyan' || node.entity_type === 'Profile') {
+        if (Array.isArray(node.relations)) {
+          for (const rel of node.relations) {
+            if (rel.relation === 'authored_project') {
+              const targetId = rel.target_id;
+              if (targetId && !retrievedIds.has(targetId) && targetId !== 'proj-mark-rag') {
+                oneHopTargetIds.add(targetId);
+              }
+            }
+          }
+        }
+      } else if (!HUB_NODE_IDS.has(nodeId) && node.entity_type !== 'Contact') {
         if (Array.isArray(node.relations)) {
           for (const rel of node.relations) {
             const targetId = rel.target_id;
@@ -254,6 +308,18 @@ module.exports = async function handler(req, res) {
         }
       }
     });
+
+    // Project Query Booster:
+    // If the inquiry asks about Hein's projects, creations, software, or apps,
+    // ensure all verified project nodes are included to fetch complete, non-hallucinated summaries.
+    const isProjectQuery = /\b(projects?|built|build|creations?|software|apps?|applications?|systems?|portfolio|works?)\b/i.test(englishQuery);
+    if (isProjectQuery) {
+      for (const pId of VERIFIED_PROJECT_IDS) {
+        if (!retrievedIds.has(pId)) {
+          oneHopTargetIds.add(pId);
+        }
+      }
+    }
 
     // Step 5: 1-Hop Graph Neighbor Expansion
     const neighborNodes = [];

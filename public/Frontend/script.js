@@ -1916,24 +1916,21 @@ if (rootElement) {
                             
                             <!-- Quick Inquiries Buttons (Referenced from M.A.R.K. Engine) -->
                             <div class="mt-3 pt-3 border-t border-jarvis-blue/20 dark:border-jarvis-cyan/20">
-                                <p class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2.5 tracking-wider uppercase">
-                                    QUICK INQUIRIES // CLICK TO RUN:
-                                </p>
                                 <div class="flex flex-wrap gap-2">
                                     <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What hackathons and awards has Hein won?">
-                                        ⚡ Hackathon &amp; Awards
+                                        Hackathon &amp; Awards
                                     </button>
                                     <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What leadership positions has Hein held at UIT and in the community?">
-                                        🛡️ Leadership Roles
+                                        Leadership Roles
                                     </button>
                                     <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="How can I contact Hein Hlyan?">
-                                        📡 Contact Channels
+                                        Contact Channels
                                     </button>
                                     <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What projects has Hein built?">
-                                        🚀 Projects
+                                        Projects
                                     </button>
                                     <button type="button" class="quick-inquiry-btn text-xs sm:text-sm font-mono font-bold px-3 py-1.5 rounded bg-white dark:bg-slate-900/90 hover:bg-jarvis-blue/10 dark:hover:bg-jarvis-cyan/15 border border-slate-300 dark:border-slate-700 hover:border-jarvis-blue dark:hover:border-jarvis-cyan text-slate-700 dark:text-slate-300 hover:text-jarvis-blue dark:hover:text-jarvis-cyan transition text-left cursor-pointer shadow-sm active:scale-95" data-query="What foreign visits and international travel has Hein made?">
-                                        🌍 International Visits
+                                        International Visits
                                     </button>
                                 </div>
                             </div>
