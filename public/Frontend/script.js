@@ -2085,12 +2085,38 @@ if (rootElement) {
                         <div class="relative group">
                             <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-slate-400 dark:border-slate-500 bg-white dark:bg-[#0c121e]"></span>
                             <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
-                                <h4 class="text-lg font-bold font-mono text-slate-900 dark:text-white">No. (2) Basic Education High School Mingalardon</h4>
+                                <h4 class="text-lg font-bold font-mono text-slate-900 dark:text-white">No. (2) Basic Education High School Mingalardon (Aung San Thuriya Hla Thaung High School)</h4>
                                 <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 w-fit">2018 — 2022</span>
                             </div>
                             <div class="text-sm sm:text-base font-semibold font-mono text-slate-500 dark:text-slate-400 mb-2">Mingalardon, Yangon</div>
                             <p class="text-base text-slate-700 dark:text-slate-300 font-mono font-semibold dark:font-normal leading-relaxed">
                                 Attended for 4 years and passed the matriculation exam in 2022 with 2 Distinctions.
+                            </p>
+                        </div>
+
+                        <!-- Education Entry 3 -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-slate-400 dark:border-slate-500 bg-white dark:bg-[#0c121e]"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                                <h4 class="text-lg font-bold font-mono text-slate-900 dark:text-white">Basic Education High School Cantonment Innma</h4>
+                                <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 w-fit">2016 — 2018</span>
+                            </div>
+                            <div class="text-sm sm:text-base font-semibold font-mono text-slate-500 dark:text-slate-400 mb-2">Pyay, Bago</div>
+                            <p class="text-base text-slate-700 dark:text-slate-300 font-mono font-semibold dark:font-normal leading-relaxed">
+                                Attended for 3 years.
+                            </p>
+                        </div>
+
+                        <!-- Education Entry 4 -->
+                        <div class="relative group">
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-slate-400 dark:border-slate-500 bg-white dark:bg-[#0c121e]"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                                <h4 class="text-lg font-bold font-mono text-slate-900 dark:text-white">Practising School Yangon Institute of Education</h4>
+                                <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 w-fit">2010 — 2016</span>
+                            </div>
+                            <div class="text-sm sm:text-base font-semibold font-mono text-slate-500 dark:text-slate-400 mb-2">Hlaing, Yangon</div>
+                            <p class="text-base text-slate-700 dark:text-slate-300 font-mono font-semibold dark:font-normal leading-relaxed">
+                                Attended for 6 years.
                             </p>
                         </div>
                     </div>
