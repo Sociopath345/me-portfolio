@@ -33,5 +33,8 @@ function copyDir(src, dest) {
 
 copyDir(path.join(__dirname, 'Frontend'), path.join(publicDir, 'Frontend'));
 copyDir(path.join(__dirname, 'photos'), path.join(publicDir, 'photos'));
+if (fs.existsSync(path.join(__dirname, 'Files'))) {
+  copyDir(path.join(__dirname, 'Files'), path.join(publicDir, 'Files'));
+}
 
 console.log('Build completed: public directory successfully generated for Vercel.');

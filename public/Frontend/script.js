@@ -2000,7 +2000,7 @@ if (rootElement) {
 
                         <!-- Dropdown Options (Fully Opaque Pop-up Menu) -->
                         <div id="downloadCvMenu" class="hidden absolute right-0 mt-2 w-72 rounded-xl bg-white dark:bg-[#0c121e] border-2 border-jarvis-blue/50 dark:border-jarvis-cyan/50 shadow-[0_15px_35px_rgba(0,0,0,0.25)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.7)] py-2 z-50 font-mono" style="opacity: 1 !important;">
-                            <a href="javascript:void(0)" onclick="alert('Standard CV PDF will be linked once the file is finalized.');" class="flex items-start gap-3 px-4 py-3 text-xs sm:text-sm text-slate-900 dark:text-white hover:bg-blue-50 dark:hover:bg-jarvis-cyan/20 transition-colors">
+                            <a href="/Files/Hein%20Hlyan%20CV%20with%20photo.pdf" download="Hein Hlyan CV with photo.pdf" target="_blank" class="flex items-start gap-3 px-4 py-3 text-xs sm:text-sm text-slate-900 dark:text-white hover:bg-blue-50 dark:hover:bg-jarvis-cyan/20 transition-colors">
                                 <svg class="w-5 h-5 text-jarvis-blue dark:text-jarvis-cyan mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                                 <div>
                                     <div class="font-bold text-slate-900 dark:text-white">Standard CV</div>
@@ -2008,7 +2008,7 @@ if (rootElement) {
                                 </div>
                             </a>
                             <div class="border-t border-slate-200 dark:border-jarvis-cyan/30 my-1"></div>
-                            <a href="javascript:void(0)" onclick="alert('ATS-Optimized CV PDF will be linked once the file is finalized.');" class="flex items-start gap-3 px-4 py-3 text-xs sm:text-sm text-slate-900 dark:text-white hover:bg-blue-50 dark:hover:bg-jarvis-cyan/20 transition-colors">
+                            <a href="/Files/Hein%20Hlyan%20CV.pdf" download="Hein Hlyan CV.pdf" target="_blank" class="flex items-start gap-3 px-4 py-3 text-xs sm:text-sm text-slate-900 dark:text-white hover:bg-blue-50 dark:hover:bg-jarvis-cyan/20 transition-colors">
                                 <svg class="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                                 <div>
                                     <div class="font-bold text-slate-900 dark:text-white">ATS-Optimized CV</div>
