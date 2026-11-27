@@ -14,6 +14,14 @@ if (fs.existsSync(path.join(__dirname, 'favicon.ico'))) {
   fs.copyFileSync(path.join(__dirname, 'favicon.ico'), path.join(publicDir, 'favicon.ico'));
 }
 
+// Copy Google site verification files to public
+const rootFiles = fs.readdirSync(__dirname);
+for (const file of rootFiles) {
+  if (file.startsWith('google') && file.endsWith('.html')) {
+    fs.copyFileSync(path.join(__dirname, file), path.join(publicDir, file));
+  }
+}
+
 // Copy directory recursively
 function copyDir(src, dest) {
   if (!fs.existsSync(dest)) {
