@@ -14,6 +14,14 @@ if (fs.existsSync(path.join(__dirname, 'favicon.ico'))) {
   fs.copyFileSync(path.join(__dirname, 'favicon.ico'), path.join(publicDir, 'favicon.ico'));
 }
 
+// Copy SEO essentials (sitemap.xml, robots.txt)
+if (fs.existsSync(path.join(__dirname, 'sitemap.xml'))) {
+  fs.copyFileSync(path.join(__dirname, 'sitemap.xml'), path.join(publicDir, 'sitemap.xml'));
+}
+if (fs.existsSync(path.join(__dirname, 'robots.txt'))) {
+  fs.copyFileSync(path.join(__dirname, 'robots.txt'), path.join(publicDir, 'robots.txt'));
+}
+
 // Copy Google site verification files to public
 const rootFiles = fs.readdirSync(__dirname);
 for (const file of rootFiles) {
